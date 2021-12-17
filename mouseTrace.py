@@ -3,7 +3,7 @@ import sys, os
 import time, csv
 
 pygame.init()
-
+os.environ['SDL_VIDEO_WINDOW_POS'] = '%d,%d' % (100, 100)
 # file path
 local_time = time.localtime()
 time_str = time.strftime("%Y%m%d%H%M%S", local_time)
@@ -21,9 +21,6 @@ elif len(sys.argv) == 2:
 else:
     file_name = default_dir + default_file
     print("The file will be saved as \"%s\""% default_file)
-
-
-
 
 # first frame
 screen = [800, 600]
@@ -51,6 +48,7 @@ pygame.mouse.set_pos(screen_center)
 [xpos, ypos] = pygame.mouse.get_pos()
 
 # force default mouse position 
+time.sleep(1)
 window_surface.fill((255, 255, 255))
 window_surface.blit(text_to_start, text_rect)
 pygame.display.update()
@@ -66,6 +64,7 @@ window_surface.fill((255, 255, 255))
 window_surface.blit(text_recording, text_rect)
 window_surface.blit(text_prepare_to_quit, text_rect2)
 pygame.display.update()
+time.sleep(0.8)
 
 # Now recording
 prepare_to_quit = 0
